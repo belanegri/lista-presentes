@@ -27,7 +27,7 @@
             max-width: 1000px;
             margin-top: 30px;
             margin-bottom: 30px;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -67,6 +67,15 @@
             text-align: left;
             font-weight: 600;
         }
+        /* Aviso em destaque */
+        
+        .alert-warning {
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px solid #f0ad4e;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
         
         @media (max-width: 576px) {
             h1 {
@@ -94,10 +103,10 @@
     <div class="container">
         <h1><i class="bi bi-gift"></i> Lista de Presentes: Chá de Panela</h1>
         <h3>Igor & Milena</h3>
-        <a><strong>Atenção:</strong> Para os utensílios, preferimos as cores <strong>preto</strong> ou <strong>branco</strong>. Obrigada =) </a> {% for categoria, presentes_lista in categorias.items() %}
 
+        {% for categoria, presentes_lista in categorias.items() %}
         <h2 class="mt-5">{{ categoria }}</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             {% for presente in presentes_lista %}
             <div class="col">
                 <div class="card p-3">
