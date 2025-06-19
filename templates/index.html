@@ -21,14 +21,20 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin-top: 50px;
+            margin-bottom: 50px;
         }
         
         .card {
             border: none;
             border-radius: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         .btn-custom {
@@ -40,6 +46,14 @@
         .btn-custom:hover {
             background-color: #ff6333;
         }
+        
+        h2 {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -48,20 +62,109 @@
     <div class="container">
         <h1 class="text-center mb-5"><i class="bi bi-gift"></i> Lista de Presentes</h1>
 
+        <!-- Banheiro -->
+        <h2>Banheiro</h2>
         <div class="row">
-            <!-- Exemplo de item -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card p-3">
-                    <h5>Jogo de Panelas Tramontina</h5>
-                    <p class="text-muted">Descrição breve do presente.</p>
-                    <button class="btn btn-custom w-100">Escolher presente</button>
-                </div>
+                    <h5>Escova para vaso sanitário</h5><button class="btn btn-custom w-100">Escolher</button></div>
             </div>
-
-            <!-- Mais presentes vem aqui dinamicamente -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Lixeira para banheiro</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Tapete antiderrapante para box</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Tapete atoalhado para banheiro</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Toalhas de banho</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Toalhas de rosto</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
         </div>
-    </div>
 
-</body>
+        <!-- Quarto -->
+        <h2>Quarto</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Cobertor</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Fronhas avulsas</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Jogo de cama</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Pegador de colchão</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Tábua de passar roupa</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+        </div>
 
-</html>
+        <!-- Lavanderia e Limpeza -->
+        <h2>Lavanderia e Limpeza</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Balde com espremedor</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Rodo para chão</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Vassoura e pá</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Escova para roupas</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Cesto para roupas sujas</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Panos de chão</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Pano de prato</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Escova para lavar louça</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+        </div>
+
+        <!-- Cozinha – Utensílios e Ferramentas -->
+        <h2>Cozinha – Utensílios e Ferramentas</h2>
+        <div class="row">
+            <!-- Aqui você pode repetir o mesmo modelo para todos os itens -->
+            <!-- Vou colocar alguns de exemplo e depois podemos completar tudo -->
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Abridor de garrafas</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3">
+                    <h5>Abridor de latas</h5><button class="btn btn-custom w-100">Escolher</button></div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3
