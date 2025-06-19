@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for, flash
 from models import db, Presente, Escolha
+from collections import defaultdict
 
 app = Flask(__name__)
 
@@ -13,10 +14,18 @@ with app.app_context():
     db.create_all()
     print("Banco criado com sucesso!")
 
+
+
 @app.route('/')
 def index():
     presentes = Presente.query.order_by(Presente.id).all()
-    return render_template('index.html', presentes=presentes)
+
+    categorias = defaultdict(list)
+    for presente in presentes:
+        categorias[presente.categoria].append(presente)
+
+    return render_template('index.html', categorias=categorias)
+
 
 @app.route('/escolher_presente/<int:presente_id>', methods=['GET', 'POST'])
 def escolher_presente(presente_id):
