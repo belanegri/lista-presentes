@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de Presentes</title>
+    <!-- Incluindo Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-5">
+
+        <h1 class="text-center mb-4 text-primary">Lista de Presentes para o Chá de Panela</h1>
+
+        <!-- Exibir mensagens flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+
+        <div class="list-group">
+            {% for presente in presentes %}
+            <div class="list-group-item d-flex justify-content-between align-items-center mb-3 shadow-sm rounded">
+                <div>
+                    <strong>{{ presente.nome }}</strong> {% if presente.foi_escolhido %}
+                    <p class="mt-2 text-success">
+                        Escolhido por: {{ presente.nome_comprador }} - {{ presente.telefone_comprador }} (Quantidade: {{ presente.quantidade }})
+                    </p>
+                    <form method="post" action="{{ url_for('cancelar_escolha', presente_id=presente.id) }}" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-danger">Cancelar escolha</button>
+                    </form>
+                    {% else %}
+                    <button onclick="mostrarFormulario({{ presente.id }})" class="btn btn-sm btn-primary mt-2">Adicionar</button> {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Formulário para escolher um presente -->
+        <div id="formulario" class="card shadow p-4 mt-4" style="display:none;">
+            <h5 class="card-title mb-3">Escolher presente: <strong id="nome_presente"></strong></h5>
+            <form method="post" action="{{ url_for('escolher_presente') }}">
+                <input type="hidden" name="presente_id" id="presente_id_input">
+
+                <div class="mb-3">
+                    <label for="nome_comprador" class="form-label">Nome:</label>
+                    <input type="text" name="nome_comprador" id="nome_comprador" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefone_comprador" class="form-label">Telefone:</label>
+                    <input type="tel" name="telefone_comprador" id="telefone_comprador" class="form-control" required pattern="[0-9\s()+-]{8,15}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantidade" class="form-label">Quantidade:</label>
+                    <input type="number" name="quantidade" id="quantidade" class="form-control" min="1" required>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Confirmar</button>
+                    <button type="button" class="btn btn-secondary" onclick="fecharFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        function mostrarFormulario(id) {
+            document.getElementById('presente_id_input').value = id;
+
+            const divs = document.querySelectorAll('.list-group-item');
+            let nome = '';
+            divs.forEach(div => {
+                const btn = div.querySelector('button');
+                if (btn && btn.getAttribute('onclick') === `mostrarFormulario(${id})`) {
+                    nome = div.querySelector('strong').innerText;
+                }
+            });
+            document.getElementById('nome_presente').innerText = nome;
+
+            document.getElementById('formulario').style.display = 'block';
+        }
+
+        function fecharFormulario() {
+            document.getElementById('formulario').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

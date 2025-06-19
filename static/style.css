@@ -1,0 +1,153 @@
+/* Reset básico adicional */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Corpo da página */
+
+body {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    color: #333;
+    padding: 20px;
+}
+
+
+/* Título principal */
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+
+/* Área principal com card do Bootstrap */
+
+.container-principal {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Lista de presentes */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 12px 20px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Botões com Bootstrap customizado */
+
+button {
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0b5ed7;
+}
+
+
+/* Formulário com sombra e borda arredondada */
+
+#formulario {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+
+/* Labels e inputs do formulário */
+
+form label {
+    font-weight: 600;
+    margin-top: 12px;
+    color: #495057;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-top: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #f8f9fa;
+}
+
+
+/* Flash messages com estilo Bootstrap */
+
+ul.flash-messages {
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+ul.flash-messages li {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+ul.flash-messages li.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+ul.flash-messages li.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+
+/* Texto dos presentes escolhidos */
+
+p {
+    font-size: 16px;
+    color: #198754;
+}
+
+
+/* Imagens dos presentes (se quiser usar imagens) */
+
+.presente-img {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+
+/* Item com imagem */
+
+.item-com-imagem {
+    display: flex;
+    align-items: center;
+}

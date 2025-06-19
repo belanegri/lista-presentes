@@ -1,0 +1,13 @@
+<body>
+    <h1>Administração - Lista de Presentes</h1>
+    <a href="/">Voltar para a página inicial</a>
+    <ul>
+        {% for p in presentes %}
+        <li>
+            {{ p.nome }} - {% if p.foi_escolhido %}
+            <span style="color: green;">Escolhido</span> {% else %}
+            <span style="color: red;">Ainda não escolhido</span> {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
