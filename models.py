@@ -9,7 +9,8 @@ class Presente(db.Model):
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     presente_id = db.Column(db.Integer, db.ForeignKey('presente.id'), nullable=False)
-    nome_doador = db.Column(db.String(100), nullable=False)
+    nome_comprador = db.Column(db.String(100), nullable=False)
+    telefone_comprador = db.Column(db.String(20))
     quantidade = db.Column(db.Integer, nullable=False)
 
     presente = db.relationship('Presente', backref=db.backref('escolhas', lazy=True))
