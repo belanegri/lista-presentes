@@ -94,8 +94,8 @@
     <div class="container">
         <h1><i class="bi bi-gift"></i> Lista de Presentes: Chá de Panela</h1>
         <h3>Igor & Milena</h3>
+        <a><strong>Atenção:</strong> Para os utensílios, preferimos as cores <strong>preto</strong> ou <strong>branco</strong>. Obrigada =) </a> {% for categoria, presentes_lista in categorias.items() %}
 
-        {% for categoria, presentes_lista in categorias.items() %}
         <h2 class="mt-5">{{ categoria }}</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for presente in presentes_lista %}
