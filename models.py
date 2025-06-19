@@ -5,6 +5,8 @@ db = SQLAlchemy()
 class Presente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
+    categoria = db.Column(db.String(50), nullable=False)
+
 
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
