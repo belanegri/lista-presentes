@@ -30,32 +30,40 @@ itens = [
     ("Cozinha", "Timer de cozinha"),
     ("Cozinha", "Avental"),
     ("Cozinha", "Luvas térmicas"),
+    ("Cozinha", "Lixinho de pia"),
+    ("Cozinha", "Potes"),
+    ("Cozinha", "Vasilhas"),
+    ("Cozinha", "Facas"),
+    ("Cozinha", "Garfos"),
+    ("Cozinha", "Colheres"),
+    ("Cozinha", "Potes para arroz"),
+    ("Cozinha", "Pote para café"),
+
 
     ("Banheiro", "Escova para vaso sanitário"),
     ("Banheiro", "Lixeira para banheiro"),
-    ("Banheiro", "Tapete antiderrapante para box"),
-    ("Banheiro", "Tapete atoalhado para banheiro"),
+    ("Banheiro", "Tapete para portas"),
+    ("Banheiro", "Tapete para banheiro"),
     ("Banheiro", "Toalhas de banho"),
     ("Banheiro", "Toalhas de rosto"),
 
     ("Quarto", "Cobertor"),
     ("Quarto", "Fronhas avulsas"),
-    ("Quarto", "Jogo de cama"),
-    ("Quarto", "Pegador de colchão"),
-    ("Quarto", "Tábua de passar roupa"),
+    ("Quarto", "Lençol"),
 
-    ("Lavanderia", "Balde com espremedor"),
+    ("Lavanderia", "Baldes"),
     ("Lavanderia", "Rodo para chão"),
-    ("Lavanderia", "Vassoura e pá"),
+    ("Lavanderia", "Vassoura"),
+    ("Lavanderia", "pá"),
     ("Lavanderia", "Escova para roupas"),
     ("Lavanderia", "Cesto para roupas sujas"),
     ("Lavanderia", "Panos de chão"),
     ("Lavanderia", "Pano de prato"),
-    ("Lavanderia", "Escova para lavar louça"),
 
-    ("Diversos", "Baldes de plástico"),
+
+   
     ("Diversos", "Cabides"),
-    ("Diversos", "Pá de lixo")
+
 ]
 
 with app.app_context():
