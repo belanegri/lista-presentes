@@ -65,7 +65,7 @@
         h2,
         h3 {
             text-align: left;
-            font-weight: 600;
+            font-weight: 800;
         }
         /* Aviso em destaque */
         
@@ -104,8 +104,14 @@
         <h1><i class="bi bi-gift"></i> Lista de Presentes: Chá de Panela</h1>
         <h3>Igor & Milena</h3>
 
-        {% for categoria, presentes_lista in categorias.items() %}
+        <a>
+            <strong>Atenção:</strong> Para os utensílios de cozinha, preferimos as cores <strong>preto</strong> ou <strong>branco</strong>. Obrigada =)
+        </a>
+
+        { % for categoria, presentes_lista in categorias.items() %}
+
         <h2 class="mt-5">{{ categoria }}</h2>
+
         <div class="row row-cols-1 row-cols-md-2 g-4">
             {% for presente in presentes_lista %}
             <div class="col">
