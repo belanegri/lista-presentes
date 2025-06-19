@@ -14,18 +14,17 @@ with app.app_context():
     db.create_all()
     print("Banco criado com sucesso!")
 
-
-
 @app.route('/')
 def index():
     presentes = Presente.query.order_by(Presente.id).all()
-
     categorias = defaultdict(list)
+    
     for presente in presentes:
+        total_escolhido = sum(escolha.quantidade for escolha in presente.escolhas)
+        presente.total_escolhido = total_escolhido  # adiciona atributo dinâmico
         categorias[presente.categoria].append(presente)
-
+    
     return render_template('index.html', categorias=categorias)
-
 
 @app.route('/escolher_presente/<int:presente_id>', methods=['GET', 'POST'])
 def escolher_presente(presente_id):

@@ -5,7 +5,9 @@ db = SQLAlchemy()
 class Presente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
-    categoria = db.Column(db.String(50), nullable=False)
+    categoria = db.Column(db.String(50), nullable=False)  # Categoria do presente
+
+    escolhas = db.relationship('Escolha', backref='presente', lazy=True)
 
 
 class Escolha(db.Model):
@@ -14,5 +16,3 @@ class Escolha(db.Model):
     nome_comprador = db.Column(db.String(100), nullable=False)
     telefone_comprador = db.Column(db.String(20))
     quantidade = db.Column(db.Integer, nullable=False)
-
-    presente = db.relationship('Presente', backref=db.backref('escolhas', lazy=True))

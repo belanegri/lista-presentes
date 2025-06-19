@@ -58,7 +58,7 @@
         }
         
         .btn-custom:hover {
-            background-color: #b6ad7e;
+            background-color: #a3955e;
         }
         
         h1,
@@ -95,7 +95,6 @@
         <h1><i class="bi bi-gift"></i> Lista de Presentes: Chá de Panela</h1>
         <h3>Igor & Milena</h3>
 
-        <!-- Agora começa a parte dinâmica com Flask -->
         {% for categoria, presentes_lista in categorias.items() %}
         <h2 class="mt-5">{{ categoria }}</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -103,6 +102,7 @@
             <div class="col">
                 <div class="card p-3">
                     <h5>{{ presente.nome }}</h5>
+                    <p><small>Já escolhido: {{ presente.total_escolhido }}</small></p>
                     <a href="{{ url_for('escolher_presente', presente_id=presente.id) }}" class="btn btn-custom w-100">Escolher</a>
                 </div>
             </div>
