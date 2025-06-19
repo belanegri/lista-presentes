@@ -1,93 +1,61 @@
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, url_for
 from models import db, Presente
 
 app = Flask(__name__)
 
-# Configurações
+# Configuração do banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///presentes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'sua_chave_secreta_aqui'
+app.secret_key = 'chave-secreta'
 
-# Inicialização do banco de dados
 db.init_app(app)
 
-# Criação automática das tabelas
-with app.app_context():
+# Criação inicial do banco de dados
+@app.before_first_request
+def cria_banco():
     db.create_all()
+    if Presente.query.count() == 0:
+        itens = [
+            "Abridor de garrafas", "Abridor de latas", "Açucareiro", "Afiador de facas", "Batedor de ovos",
+            "Colher para sorvete", "Concha", "Espátula para bolo", "Espremedor de alho", "Espremedor de batatas",
+            "Espremedor de frutas", "Faca de pão", "Faquinhas de patê", "Fatiador de queijos", "Pegador de massas",
+            "Ralador", "Rolo de abrir massa", "Saleiro / Pimenteiro / Paliteiro", "Suporte para filtro de café",
+            "Suporte para sabão e detergente", "Tesoura comum", "Xícaras de medida", "Medidores de xícaras e colheres",
+            "Timer de cozinha", "Avental", "Luvas térmicas", "Assadeira antiaderente", "Bacias de plástico",
+            "Escorredor de arroz", "Escorredor de macarrão", "Escorredor de talheres", "Forma para bolo",
+            "Forma para gelo", "Forma para pizza", "Frigideira pequena", "Funil pequeno de plástico",
+            "Garrafa térmica", "Jarra para água", "Jarra para suco", "Peneiras para culinária (P/M/G)",
+            "Porta-condimentos", "Porta-temperos giratório ou magnético", "Potes herméticos para mantimentos",
+            "Descanso de panela", "Jogo porta-copos", "Lixeira pequena para cozinha", "Petisqueira",
+            "Porta-guardanapos", "Suporte para papel toalha", "Tábua para cortar alimentos", "Tábua de frios",
+            "Toalha de mesa para uso diário", "Escova para vaso sanitário", "Lixeira para banheiro",
+            "Tapete antiderrapante para box", "Tapete atoalhado para banheiro", "Toalhas de banho", "Toalhas de rosto",
+            "Cobertor", "Fronhas avulsas", "Jogo de cama", "Pegador de colchão", "Tábua de passar roupa",
+            "Balde com espremedor", "Rodo para chão", "Vassoura e pá", "Escova para roupas",
+            "Cesto para roupas sujas", "Panos de chão", "Pano de prato", "Escova para lavar louça",
+            "Baldes de plástico", "Cabides", "Pá de lixo"
+        ]
+        for item in itens:
+            db.session.add(Presente(nome=item))
+        db.session.commit()
 
-
-# Rota principal - lista de presentes
 @app.route('/')
 def index():
-    presentes = Presente.query.order_by(Presente.id).all()
+    presentes = Presente.query.all()
     return render_template('index.html', presentes=presentes)
 
-
-# Rota para escolher um presente
-@app.route('/escolher_presente', methods=['POST'])
-def escolher_presente():
-    presente_id = request.form.get('presente_id')
-    nome = request.form.get('nome_comprador', '').strip()
-    telefone = request.form.get('telefone_comprador', '').strip()
-    quantidade = request.form.get('quantidade')
-
-    # Validação de campos
-    if not presente_id or not nome or not telefone or not quantidade:
-        flash('Todos os campos são obrigatórios.', 'error')
-        return redirect(url_for('index'))
-
-    try:
-        quantidade = int(quantidade)
-        if quantidade < 1:
-            raise ValueError
-    except ValueError:
-        flash('A quantidade deve ser um número inteiro maior que zero.', 'error')
-        return redirect(url_for('index'))
-
-    presente = Presente.query.get(presente_id)
-    if not presente:
-        flash('Presente não encontrado.', 'error')
-        return redirect(url_for('index'))
-
-    if presente.foi_escolhido:
-        flash('Este presente já foi escolhido.', 'error')
-        return redirect(url_for('index'))
-
-    # Atualiza o presente
-    presente.foi_escolhido = True
-    presente.nome_comprador = nome
-    presente.telefone_comprador = telefone
-    presente.quantidade = quantidade
-
-    db.session.commit()
-    flash('Presente escolhido com sucesso!', 'success')
-    return redirect(url_for('index'))
-
-
-# Rota para cancelar escolha
-@app.route('/cancelar_escolha/<int:presente_id>', methods=['POST'])
-def cancelar_escolha(presente_id):
-    presente = Presente.query.get(presente_id)
-    if presente and presente.foi_escolhido:
-        presente.foi_escolhido = False
-        presente.nome_comprador = None
-        presente.telefone_comprador = None
-        presente.quantidade = None
+@app.route('/escolher/<int:id>')
+def escolher_presente(id):
+    presente = Presente.query.get(id)
+    if presente and not presente.escolhido:
+        presente.escolhido = True
         db.session.commit()
-        flash('Escolha cancelada com sucesso!', 'success')
-    else:
-        flash('Não foi possível cancelar a escolha.', 'error')
     return redirect(url_for('index'))
 
-
-# Área administrativa
 @app.route('/admin')
 def admin():
-    presentes = Presente.query.order_by(Presente.id).all()
+    presentes = Presente.query.all()
     return render_template('admin.html', presentes=presentes)
 
-
-# Rodar o servidor
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
-
+if __name__ == '__main__':
+    app.run(debug=True)
