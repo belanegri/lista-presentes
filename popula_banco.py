@@ -2,6 +2,7 @@ from app import app, db
 from models import Presente
 
 itens = [
+    # Cozinha – Utensílios e Ferramentas
     ("Cozinha", "Abridor de garrafas"),
     ("Cozinha", "Abridor de latas"),
     ("Cozinha", "Açucareiro"),
@@ -39,31 +40,67 @@ itens = [
     ("Cozinha", "Potes para arroz"),
     ("Cozinha", "Pote para café"),
 
+    # Cozinha – Preparação e Armazenamento (novos)
+    ("Cozinha", "Assadeira antiaderente"),
+    ("Cozinha", "Bacias de plástico"),
+    ("Cozinha", "Escorredor de arroz"),
+    ("Cozinha", "Escorredor de macarrão"),
+    ("Cozinha", "Escorredor de talheres"),
+    ("Cozinha", "Forma para bolo"),
+    ("Cozinha", "Forma para gelo"),
+    ("Cozinha", "Forma para pizza"),
+    ("Cozinha", "Frigideira pequena"),
+    ("Cozinha", "Funil pequeno de plástico"),
+    ("Cozinha", "Garrafa térmica"),
+    ("Cozinha", "Jarra para água"),
+    ("Cozinha", "Jarra para suco"),
+    ("Cozinha", "Peneiras para culinária (P/M/G)"),
+    ("Cozinha", "Porta-condimentos"),
+    ("Cozinha", "Porta-temperos giratório ou magnético"),
+    ("Cozinha", "Potes herméticos para mantimentos"),
+    ("Cozinha", "Descanso de panela"),
 
+    # Cozinha – Organização e Servir
+    ("Cozinha", "Jogo porta-copos"),
+    ("Cozinha", "Lixeira pequena para cozinha"),
+    ("Cozinha", "Petisqueira"),
+    ("Cozinha", "Porta-guardanapos"),
+    ("Cozinha", "Suporte para papel toalha"),
+    ("Cozinha", "Tábua para cortar alimentos"),
+    ("Cozinha", "Tábua de frios"),
+    ("Cozinha", "Toalha de mesa para uso diário"),
+
+    # Banheiro
     ("Banheiro", "Escova para vaso sanitário"),
     ("Banheiro", "Lixeira para banheiro"),
-    ("Banheiro", "Tapete para portas"),
-    ("Banheiro", "Tapete para banheiro"),
+    ("Banheiro", "Tapete antiderrapante para box"),
+    ("Banheiro", "Tapete atoalhado para banheiro"),
     ("Banheiro", "Toalhas de banho"),
     ("Banheiro", "Toalhas de rosto"),
 
+    # Quarto
     ("Quarto", "Cobertor"),
     ("Quarto", "Fronhas avulsas"),
+    ("Quarto", "Jogo de cama"),
     ("Quarto", "Lençol"),
+    ("Quarto", "Pegador de colchão"),
+    ("Quarto", "Tábua de passar roupa"),
 
+    # Lavanderia
     ("Lavanderia", "Baldes"),
     ("Lavanderia", "Rodo para chão"),
     ("Lavanderia", "Vassoura"),
-    ("Lavanderia", "pá"),
+    ("Lavanderia", "Pá"),
     ("Lavanderia", "Escova para roupas"),
     ("Lavanderia", "Cesto para roupas sujas"),
     ("Lavanderia", "Panos de chão"),
     ("Lavanderia", "Pano de prato"),
+    ("Lavanderia", "Escova para lavar louça"),
 
-
-   
+    # Diversos
     ("Diversos", "Cabides"),
-
+    ("Diversos", "Pá de lixo"),
+    ("Diversos", "Baldes de plástico"),
 ]
 
 with app.app_context():
