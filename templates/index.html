@@ -1,53 +1,38 @@
 <!DOCTYPE html>
-<!-- Informa que o documento é um HTML5 -->
 <html lang="pt-br">
-<!-- Define o idioma da página como português -->
 
 <head>
-    <meta charset="UTF-8">
-    <!-- Define o conjunto de caracteres usado (suporte a acentuação etc) -->
+    <meta charset="UTF-8" />
     <title>Lista Chá de Panela</title>
-    <!-- Título da página (aparece na aba do navegador) -->
 
-    <!-- Importando o Bootstrap 5.3 (biblioteca CSS para facilitar o layout bonito e responsivo) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Importando a fonte "Poppins" do Google Fonts (deixa o texto mais bonito) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-    <!-- Importando os ícones do Bootstrap Icons (usamos o ícone de presente no título) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <!-- Estilos CSS personalizados da página -->
     <style>
-        /* Define a fonte padrão do corpo da página */
-        
         body {
             font-family: 'Poppins', sans-serif;
             background: url('') no-repeat center center fixed;
-            /* aqui você pode colocar o link da imagem de fundo */
+            /* Coloque o link da imagem de fundo aqui */
             background-size: cover;
             margin: 0;
             padding: 0;
             font-size: 1.2rem;
-            /* aumenta o tamanho base da fonte */
         }
-        /* Estilo do container principal que envolve tudo */
         
         .container {
             max-width: 1000px;
-            /* largura máxima */
-            margin-top: 80px;
-            margin-bottom: 80px;
+            margin: 80px auto;
             background-color: rgba(255, 255, 255, 0.95);
-            /* fundo branco semi-transparente */
             border-radius: 20px;
-            /* bordas arredondadas */
             padding: 50px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            /* sombra ao redor */
         }
-        /* Estilização do título principal */
         
         h1 {
             font-size: 2.8rem;
@@ -55,16 +40,13 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        /* Estilização dos subtítulos (categorias) */
         
         h2 {
             font-size: 2rem;
             font-weight: 700;
             margin-top: 40px;
             color: #ce5a0d;
-            /* cor alaranjada */
         }
-        /* Subtítulo menor (Igor & Milena) */
         
         h3 {
             font-size: 1.8rem;
@@ -72,38 +54,30 @@
             text-align: center;
             margin-bottom: 40px;
         }
-        /* Estilização dos cards (caixinhas dos presentes) */
         
         .card {
             border: none;
-            /* sem borda externa */
             border-radius: 20px;
             background-color: transparent;
-            /* fundo transparente */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            /* sombra leve */
             transition: 0.3s;
-            /* animação suave no hover */
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 1rem;
         }
-        /* Efeito ao passar o mouse nos cards */
         
         .card:hover {
             transform: translateY(-5px);
-            /* levanta o card um pouco */
             box-shadow: 0 6px 16px rgba(207, 153, 52, 0.2);
-            /* aumenta a sombra */
         }
-        /* Estilo do título do presente dentro do card */
         
         .card h5 {
             font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
         }
-        /* Botão de escolher o presente */
         
         .btn-custom {
             background-color: #ce5a0d;
@@ -112,13 +86,19 @@
             font-weight: 800;
             font-size: 1.3rem;
             padding: 12px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
         }
-        /* Efeito hover do botão */
         
         .btn-custom:hover {
             background-color: #da511c;
+            color: white;
+            text-decoration: none;
         }
-        /* Estilo da mensagem de aviso no topo */
         
         .alert-warning {
             font-size: 1.6rem;
@@ -126,8 +106,9 @@
             border: 3px solid #f0ad4e;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            margin-bottom: 0;
         }
-        /* Responsividade: ajusta para telas pequenas (celular) */
+        /* Responsividade */
         
         @media (max-width: 576px) {
             h1 {
@@ -148,9 +129,8 @@
 </head>
 
 <body>
-
-    <!-- Mensagem de aviso no topo -->
-    <div class="alert alert-warning text-center mb-0" role="alert">
+    <!-- Mensagem de aviso -->
+    <div class="alert alert-warning text-center" role="alert">
         ⚠️ <strong>Atenção:</strong> Para os utensílios de cozinha, preferimos as cores <strong>preto</strong> ou <strong>branco</strong>. Obrigada =)
     </div>
 
@@ -159,25 +139,30 @@
         <h1><i class="bi bi-gift"></i> Lista de Presentes: Chá de Panela</h1>
         <h3>Igor & Milena</h3>
 
-        <!-- Agora começa a parte dinâmica (Flask) -->
+        <!-- Conteúdo dinâmico com Flask -->
         {% for categoria, presentes_lista in categorias.items() %}
         <h2>{{ categoria }}</h2>
 
-        <!-- Dentro de cada categoria, exibe os presentes -->
         <div class="row row-cols-1 row-cols-md-2 g-4">
             {% for presente in presentes_lista %}
             <div class="col">
-                <div class="card p-3">
+                <div class="card">
                     <h5>{{ presente.nome }}</h5>
-                    <p><small>Já escolhido: {{ presente.total_escolhido }}</small></p>
-                    <a href="{{ url_for('escolher_presente', presente_id=presente.id) }}" class="btn btn-custom w-100">Escolher</a>
+
+                    {% if presente.total_escolhido > 0 %}
+                    <p><small>🎁 Já escolhido por {{ presente.total_escolhido }} pessoa(s)</small></p>
+                    <p><small><strong>Quem escolheu:</strong> {{ presente.quem_escolheu }}</small></p>
+                    {% else %}
+                    <p><small>Disponível</small></p>
+                    {% endif %}
+
+                    <a href="{{ url_for('escolher_presente', presente_id=presente.id) }}" class="btn-custom">Escolher</a>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% endfor %}
     </div>
-
 </body>
 
 </html>
