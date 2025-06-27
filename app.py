@@ -86,4 +86,4 @@ def confirmar_presente():
     return render_template('confirmar.html', presente=presente, dados=dados)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
