@@ -82,6 +82,8 @@ def confirmar_presente():
 
         flash('Escolha confirmada com sucesso!', 'success')
         return redirect(url_for('index'))
+    
+    print("DADOS DA SESSÃO:", session.get('dados_escolha'))
 
     return render_template('confirmar.html', presente=presente, dados=dados)
 
