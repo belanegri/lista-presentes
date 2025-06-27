@@ -6,11 +6,12 @@ class Presente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
     categoria = db.Column(db.String(100), nullable=False)
-    total_escolhido = db.Column(db.Integer, default=0)
-    quem_escolheu = db.Column(db.String(200), default='')  # nomes separados por vírgula
 
     escolhas = db.relationship('Escolha', backref='presente', lazy=True)
 
+    # Atributos calculados em tempo de execução
+    total_escolhido = 0
+    quem_escolheu = ''
 
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)

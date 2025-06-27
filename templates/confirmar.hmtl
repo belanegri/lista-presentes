@@ -7,19 +7,18 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4">Confirmar escolha</h1>
+        <h1 class="mb-4 text-center">Confirmar Escolha</h1>
         <div class="card p-4">
             <h4>Você escolheu: <strong>{{ presente.nome }}</strong></h4>
+            <p><strong>Nome:</strong> {{ dados.nome }}</p>
+            <p><strong>Telefone:</strong> {{ dados.telefone or 'Não informado' }}</p>
+            <p><strong>Quantidade:</strong> {{ dados.quantidade }}</p>
+
             <form method="POST">
-                <div class="mb-3 mt-4">
-                    <label for="nome" class="form-label">Digite seu nome:</label>
-                    <input type="text" name="nome" id="nome" class="form-control" required>
-                </div>
                 <button type="submit" class="btn btn-success">Confirmar</button>
-                <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+                <a href="{{ url_for('escolher_presente', presente_id=presente.id) }}" class="btn btn-secondary ms-2">Editar</a>
             </form>
         </div>
     </div>
 </body>
 </html>
-

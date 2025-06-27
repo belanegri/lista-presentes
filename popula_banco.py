@@ -40,7 +40,7 @@ itens = [
     ("Cozinha", "Potes para arroz"),
     ("Cozinha", "Pote para café"),
 
-    # Cozinha – Preparação e Armazenamento (novos)
+    # Cozinha – Preparação e Armazenamento
     ("Cozinha", "Assadeira antiaderente"),
     ("Cozinha", "Bacias de plástico"),
     ("Cozinha", "Escorredor de arroz"),
@@ -104,12 +104,14 @@ itens = [
 ]
 
 with app.app_context():
+    total_adicionados = 0
     for categoria, nome in itens:
         existe = Presente.query.filter_by(nome=nome).first()
         if not existe:
-            p = Presente(nome=nome, categoria=categoria)
-            db.session.add(p)
+            presente = Presente(nome=nome, categoria=categoria)
+            db.session.add(presente)
+            total_adicionados += 1
     db.session.commit()
-    print("Itens adicionados ao banco com sucesso!")
+    print(f"{total_adicionados} itens adicionados ao banco com sucesso!")
 
 exit()
